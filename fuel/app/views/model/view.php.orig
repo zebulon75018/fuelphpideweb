@@ -1,0 +1,54 @@
+    <script src="/fuelphp/public/assets/js/jsoneditor.js"></script>
+
+<form >
+   <div id="editor_holder" > </div>
+	<input type="submit" />
+</form >
+<script>
+JSONEditor.defaults.options.disable_array_reorder = true;
+JSONEditor.defaults.options.disable_array_delete = true;
+	 // Initialize the editor
+var editor = new JSONEditor(document.getElementById("editor_holder"),{
+  schema: {
+      "type": "array",
+      "format": "table",
+      "title": "TABLE EDITOR",
+      "uniqueItems": true,
+      "items": {
+        type: "object",
+        properties: {
+          name: { "type": "string" },		  
+          label: { "type": "string" },		  
+	 "type": {
+            "type": "string",
+            "enum": [
+              "INT",
+              "VARCHAR",
+	      "CHAR",
+	      "TEXT",
+              "DATE",
+              "BOOLEAN",
+              "TIMESTAMP",
+	      "DECIMAL",
+	      "COLOR",
+	      "ICON",
+	      "PRIMARYKEY",
+	      "FOREIGNKEY"
+            ],
+            "default": "INT"            		  
+		  },
+          reftable: { "type": "string" , 
+                "default": "",
+		"enum" : <?php echo json_encode(Util_OrmFromDB::getAllTableAndNone()); ?>
+		},
+          show: { 
+  		"type": "boolean",
+                "default": "true"            		  
+		}
+	  }
+      }
+  }  
+});
+
+editor.setValue(<?php  echo $schema; ?>);
+</script>

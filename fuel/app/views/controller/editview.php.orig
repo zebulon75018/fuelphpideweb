@@ -1,0 +1,14 @@
+<form>
+<textarea name="html" class="cleditor" rows="4">
+<?php echo $controller; ?>
+</textarea >
+<input type=submit />
+</form>
+<script type="text/javascript" src="/fuelphp/public/assets/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/fuelphp/public/assets/js/jquery.cleditor.min.js"></script>
+<link id="base-style-responsive" type="text/css" rel="stylesheet" href="/fuelphp/public/assets/css/jquery.cleditor.css" />
+
+
+<script>
+        $(document).ready(function () { $(".cleditor").cleditor(); });
+</script>
